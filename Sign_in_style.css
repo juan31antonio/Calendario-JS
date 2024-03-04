@@ -1,3 +1,7 @@
+::selection{
+    background-color: rgba(128, 128, 128, 0.5);
+    color: rgb(43, 43, 43);
+}
 #container{
     background-color: #D9D9D9;
     display: flex;
