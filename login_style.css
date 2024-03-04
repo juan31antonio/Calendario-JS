@@ -46,7 +46,6 @@ input{
     padding-left: 1em;
     box-sizing: border-box;
     color: white;
->>>>>>> develop
 }
 
 input::placeholder{
@@ -76,5 +75,4 @@ button:hover{
 ::selection{
     background-color: rgba(128, 128, 128, 0.5);
     color: rgb(43, 43, 43);
->>>>>>> develop
 }
