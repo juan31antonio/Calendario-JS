@@ -4,7 +4,55 @@
     flex-direction: column;
     align-items: center;
     border-radius: 2%;
-    padding: 5%;
+    padding: 2em 5% 3em 5%;
+}
+h1{
+    margin-bottom: 1em;
+}
+#inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#inputs input{
+    background-color:#575757;
+    color: white;
+    border-radius: 1em;
+    margin-bottom: 7%;
+    width: 22em;
+    height: 3em;
+    border: 0px;
+    box-sizing: border-box;
+    padding-left: 1em;
+}
+input::placeholder{
+    color: white;
+}
+#Sing_in_sites{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#Sing_in_sites button{
+    margin-bottom: 7%;
+}
+.button{
+    background-color:#575757;
+    color: white;
+    border-radius: 2em;
+    height: 3em;
+    width: 22em;
+    border: 0px;
+}
+.button:active{
+    background-color:#797777;
+    box-shadow: 0px 0px 0.3em 0.1em rgb(27, 27, 27);
+}
+.button:hover{
+    background-color:#636262;
+}
+#create_account button{
+    margin-top: 7%;
 }
 .centrado{
     position: absolute;
@@ -15,14 +63,15 @@
 .line{
     display: flex;
     flex-direction: initial;
+    margin-bottom: 7%;
 }
 .line hr{
     vertical-align: middle;
-    width: 200px;
+    width: 7.5em;
     display: inline-block;
-    border: 1px solid black;
-    margin: 4%;
+    border: 0.1em solid black;
 }
-hr:last-of-type{
-    width: 100%;
+hr:not(.line hr){
+    width: 18em;
+    border: 0.1em solid black;
 }
