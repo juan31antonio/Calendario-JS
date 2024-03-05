@@ -12,14 +12,17 @@
         <div id="inputs">
             <input type="text" placeholder="Description"><!-- Expandir con JS -->
             <input type="time" placeholder="Time">
-            <select>
-                <option value="Green" id="green"></option>
-                <option value="Orange" id="orange"></option>
-                <option value="Red" id="red"></option>
-                <option value="Purple" id="purple"></option>
-                <option value="Dark Blue" id="dark_blue"></option>
-                <option value="Light Blue" id="light_blue"></option>
-            </select><!-- Cambiar color de todo el input con JS -->
+            <div class="dropdown">
+                <span>Selecciona un color</span>
+                <div class="dropdown-content">
+                  <a href="#" id="green">Verde</a>
+                  <a href="#" id="orange">Naranja</a>
+                  <a href="#" id="red">Rojo</a>
+                  <a href="#" id="purple">Morado</a>
+                  <a href="#" id="dark_blue">Azul oscuro</a>
+                  <a href="#" id="light_blue">Azul claro</a>
+                </div>
+              </div><!-- Cambiar color de todo el input con JS -->
         </div>
         <hr>
         <button>Confirm Changes</button>
