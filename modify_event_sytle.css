@@ -16,7 +16,6 @@
     flex-direction: column;
     align-items: center;
 }
-
 hr{
     vertical-align: middle;
     display: inline-block;
@@ -29,10 +28,10 @@ hr{
 h1 {
     margin-bottom: 1em;
 }
- 
-input{
-    width: 22em; 
-    height: 3em; 
+
+input, select{
+    width: 22em;
+    height: 3em;
     border-radius: 1em;
     border: 0px;
     background-color:#575757;
@@ -41,7 +40,24 @@ input{
     box-sizing: border-box;
     color: white;
 }
-
+#green{
+    background-color: green;
+}
+#orange{
+    background-color: orange;
+}
+#red{
+    background-color: red;
+}
+#purple{
+    background-color: purple;
+}
+#dark_blue{
+    background-color: darkblue;
+}
+#light_blue{
+    background-color: lightskyblue;
+}
 input::placeholder{
     color: white;
 }
@@ -62,7 +78,9 @@ button:active{
 button:hover{
     background-color:#636262;
 }
-
+select option:hover{
+    background-color: transparent;
+}
 ::selection{
     background-color: rgba(128, 128, 128, 0.5);
     color: rgb(43, 43, 43);
