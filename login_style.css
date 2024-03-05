@@ -8,7 +8,7 @@
     flex-direction: column;
     align-items: center;
     border-radius: 2%;
-    padding: 5%;
+    padding: 2em 5% 3em 5%;
 }
 
 #inputs {
@@ -28,15 +28,10 @@ hr{
 }
 
 h1 {
-    display: flex;
-    justify-content: center;
-    margin-top: -1.5em; 
     margin-bottom: 1em;
 }
  
 input{
-    display: flex;
-    justify-content: center;
     width: 22em; 
     height: 3em; 
     border-radius: 1em;
@@ -54,7 +49,6 @@ input::placeholder{
 
 button{
     margin-top: 1.5em;
-    margin-bottom: -15%;
     border-radius: 2em;
     border: 0px;
     background-color:#575757;
