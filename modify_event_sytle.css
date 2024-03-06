@@ -71,10 +71,7 @@ button{
     width: 22em;
 }
 
-button:active{
-    background-color:#797777;
-    box-shadow: 0px 0px 0.3em 0.1em rgb(27, 27, 27);
-}
+
 button:hover{
     background-color:#636262;
 }
@@ -113,9 +110,9 @@ button:active {
 .dropdown span {
     display: inline-block;
     width: 18em;
-    height: 3em;
-    line-height: 3em; 
-    border-radius: 1em;
+    height: 2.5em;
+    line-height: 2.5em; 
+    border-radius: 0.8em;
     background-color: #575757;
     color: white;
     padding-left: 1em;
