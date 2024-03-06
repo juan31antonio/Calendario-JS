@@ -8,18 +8,15 @@
   <script>
     function toggleVisibility(clickedDiv) {
         const triangulos = document.querySelectorAll("#arrows div");
-
         
         for (const arrow of triangulos) {
             arrow.style.visibility = "hidden";
         }
 
-        
         const divs = document.querySelectorAll("#div-container .box");
         const index = Array.from(divs).indexOf(clickedDiv);
-        if (index >= 0 && index < triangulos.length) {
-            triangulos[index].style.visibility = "visible";
-        }
+        triangulos[index].style.visibility = "visible";
+        
     }
 </script>
 </head>
