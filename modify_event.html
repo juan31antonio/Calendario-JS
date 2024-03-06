@@ -6,25 +6,22 @@
   <title>Calendar</title>
   <link rel="stylesheet" href="modify_event_sytle.css">
   <script>
-    const divs = document.querySelectorAll("#div-container .box");
-    const triangulos = document.querySelectorAll("#arrows div");
     function toggleVisibility(clickedDiv) {
-        var index;
-            for(div of divs){
-                if(div.id === clickedDiv.id){
-                   break;
-                }
-                else{
-                    index++;
-                }
-            }
-          triangulos[index].style.visibility = "visible";
+        const triangulos = document.querySelectorAll("#arrows div");
+
+        
+        for (const arrow of triangulos) {
+            arrow.style.visibility = "hidden";
         }
-  
-      for (const div of divs) {
-        div.addEventListener("click", () => toggleVisibility(div));
-      }
-    </script>
+
+        
+        const divs = document.querySelectorAll("#div-container .box");
+        const index = Array.from(divs).indexOf(clickedDiv);
+        if (index >= 0 && index < triangulos.length) {
+            triangulos[index].style.visibility = "visible";
+        }
+    }
+</script>
 </head>
 <body>
   <div id="container">
@@ -51,7 +48,6 @@
         <div>^</div>
         <div>^</div>
       </div>
-      
     </div>
     <hr>
     <button>Confirm Changes</button>
