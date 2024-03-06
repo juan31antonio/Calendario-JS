@@ -1,0 +1,75 @@
+body {
+    background-color: #efefef;
+    color: #50555a;
+    font-family: 'Inconsolata';
+    font-size: 36px;
+    margin: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+  }
+  
+  #datetime {
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 30%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+  }
+  
+  #virtual_knob {
+    font-size: 28px;
+    height: 120px;
+    left: 50%;
+    line-height: 58px;
+    position: absolute;
+    top: calc(50% + 40px);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    width: 120px;
+  }
+  
+  #knob {
+    background-color: white;
+    border: 1px solid #bbb;
+    border-radius: 50%;
+    box-shadow: 0px 1px 7px 1px rgba(32,32,32,.7);
+    box-sizing: border-box;
+    color: white;
+    font-size: 28px;
+    height: 80px;
+    left: 20px;
+    line-height: 58px;
+    position: absolute;
+    top: 20px;
+    width: 80px;
+  }
+  
+  #dial {
+    background-color: #70757a;
+    height: 14px;
+    left: 58px;
+    position: absolute;
+    top: 24px;
+    width: 2px;
+  }
+  
+  .field {
+    cursor: pointer;
+    transition: color 200ms, border-color 200ms;
+    border-bottom: 2px solid;
+    border-color: transparent;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+  
+  .active {
+    color: #44aa55;
+    border-color: #44aa55;
+  }
