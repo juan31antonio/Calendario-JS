@@ -1,0 +1,27 @@
+
+.scroll-down{
+    position: absolute;
+    z-index: 200;
+    bottom: 6rem;
+    left: 50%;
+    padding: 2rem;
+    cursor: pointer;
+    transition: color .3s ease-out;
+    transform: translateX(-50%);
+}
+.scroll-down-arrow {
+    cursor: pointer;
+    width: 1.4rem;
+    height: 2.5rem;
+    fill: $color-2;
+    transform: all .3s ease-out;
+  rect{
+    transform-origin: bottom;
+    animation: arrow-bar 1s infinite ease-out;
+  }
+}
+.scroll-down {
+  position: fixed;
+  bottom: 2rem;
+  transform: translateX(-50%) rotate(180deg);
+}
