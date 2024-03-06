@@ -20,8 +20,7 @@ hr{
     vertical-align: middle;
     display: inline-block;
     border: 0.1em solid black;
-    margin-top: 1em;  
-    margin-bottom: 1em; 
+    margin-bottom: 2em; 
     width: 18em;
 }
 
@@ -43,22 +42,46 @@ input{
 #green{
     background-color: green;
     border-radius: 2em 0px 0px 2em;
+    transition: background-color 0.3s ease;
+}
+#green:active{
+    background-color: rgba(0, 128, 0, 0.445);
 }
 #orange{
     background-color: orange;
+    transition: background-color 0.3s ease;
+}
+#orange:active{
+    background-color: rgba(255, 166, 0, 0.445);
 }
 #red{
     background-color: red;
+    transition: background-color 0.3s ease;
+}
+#red:active{
+    background-color: rgba(255, 0, 0, 0.445);
 }
 #purple{
     background-color: purple;
+    transition: background-color 0.3s ease;
+}
+#purple:active{
+    background-color: rgba(128, 0, 128, 0.445);
 }
 #dark_blue{
     background-color: darkblue;
+    transition: background-color 0.3s ease;
+}
+#dark_blue:active{
+    background-color: rgba(0, 0, 139, 0.445);
 }
 #light_blue{
     background-color: lightskyblue;
     border-radius:  0px 2em 2em 0px ;
+    transition: background-color 0.3s ease;
+}
+#light_blue:active{
+    background-color: rgba(135, 206, 250, 0.445);
 }
 input::placeholder{
     color: white;
@@ -80,9 +103,6 @@ button{
     height: 2em;
     width: 2.9em;
     border: solid 0.1em black;
-}
-#div-container div:active{
-    background-color: transparent;
 }
 button:hover{
     background-color:#636262;
@@ -119,4 +139,16 @@ button:active {
     display: flex;
     flex-direction: column;
     border-radius: 2em;
+}
+#arrows{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: -0.5em;
+    margin-top: -0.20em;
+    width: 18em;
+    justify-content: space-evenly;
+}
+#arrows div{
+    font-size: 3em;
+    visibility: hidden;
 }

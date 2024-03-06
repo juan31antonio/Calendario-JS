@@ -1,32 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar</title>
-    <link rel="stylesheet" href="modify_event_sytle.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar</title>
+  <link rel="stylesheet" href="modify_event_sytle.css">
+  <script>
+    const divs = document.querySelectorAll("#div-container .box");
+    const triangulos = document.querySelectorAll("#arrows div");
+    function toggleVisibility(clickedDiv) {
+        var index;
+            for(div of divs){
+                if(div.id === clickedDiv.id){
+                   break;
+                }
+                else{
+                    index++;
+                }
+            }
+          triangulos[index].style.visibility = "visible";
+        }
+  
+      for (const div of divs) {
+        div.addEventListener("click", () => toggleVisibility(div));
+      }
+    </script>
 </head>
 <body>
-    <div id="container">   
-        <h1>Event Name</h1>
-        <div id="inputs">
-            <input type="text" placeholder="Description"><!-- Expandir con JS -->
-            <input type="time" placeholder="Time">
-            <div class="dropdown">
-                <span>
-                    <div id="div-container">
-                       <div id="green"></div>
-                        <div id="orange"></div>
-                        <div id="red"></div>
-                        <div id="purple"></div>
-                        <div id="dark_blue"></div>
-                        <div id="light_blue"></div> 
-                    </div>
-                </span>
-              </div><!-- Cambiar color de todo el input con JS -->
-        </div>
-        <hr>
-        <button>Confirm Changes</button>
+  <div id="container">
+    <h1>Event Name</h1>
+    <div id="inputs">
+      <input type="text" placeholder="Description"><input type="time" placeholder="Time">
+      <div class="dropdown">
+        <span>
+          <div id="div-container">
+            <div id="green" class="box" onclick="toggleVisibility(this)"></div>
+            <div id="orange" class="box" onclick="toggleVisibility(this)"></div>
+            <div id="red" class="box" onclick="toggleVisibility(this)"></div>
+            <div id="purple" class="box" onclick="toggleVisibility(this)"></div>
+            <div id="dark_blue" class="box" onclick="toggleVisibility(this)"></div>
+            <div id="light_blue" class="box" onclick="toggleVisibility(this)"></div>
+          </div>
+        </span>
+      </div>
+      <div id="arrows">
+        <div>^</div>
+        <div>^</div>
+        <div>^</div>
+        <div>^</div>
+        <div>^</div>
+        <div>^</div>
+      </div>
+      
     </div>
+    <hr>
+    <button>Confirm Changes</button>
+  </div>
 </body>
-</html> 
+</html>
