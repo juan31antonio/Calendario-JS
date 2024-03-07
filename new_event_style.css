@@ -141,3 +141,8 @@ button:active {
     height: 3em;
     border-radius: 1em;
 }
+.swal2-popup {
+    width: initial;
+    padding: initial;
+    background: #efefef;
+}

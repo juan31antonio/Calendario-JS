@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="time_select_style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="time_select.js"></script>
 </head>
-<body>
+<body onload="timer()">
     <div id="datetime">
         <span id="hour" class="active field">HH</span> :
         <span id="minute" class="field">MM</span> :
@@ -20,106 +21,5 @@
     <div id="dial">
     </div>
     </div>
-    <script>
-        var date = new Date();
-        var hours = Array.from({length: 24}, (_, i) => i); 
-        var minutes = Array.from({length: 60}, (_, i) => i); 
-        var seconds = Array.from({length: 60}, (_, i) => i); 
-        var state = 0;
-    
-        function moveFocus(direction) {
-            if (direction === 'next') {
-                if (state < 2) {
-                    state++;
-                    setFocus(state);
-                }
-            }
-            else if (direction === 'prev') {
-                if (state > 0) {
-                    state--;
-                    setFocus(state);
-                }
-            }
-        }
-    
-        function clearFocus() {
-            $('#hour').removeClass('active');
-            $('#minute').removeClass('active');
-            $('#seconds').removeClass('active');
-        }
-    
-        function setFocus(newState) {
-            clearFocus();
-            state = newState;
-    
-            if (state === 0) {
-                $('#hour').addClass('active');
-            } else if (state === 1) {
-                $('#minute').addClass('active');
-            } else if (state === 2) {
-                $('#seconds').addClass('active');
-            }
-        }
-    
-        function setValue(change) {
-            if (state === 0) {
-                var h = date.getHours() + change;
-                h = (h < 0) ? 23 : (h > 23) ? 0 : h;
-                date.setHours(h);
-                $('#hour').html((h < 10 ? '0' : '') + h);
-            }
-            else if (state === 1) {
-                var m = date.getMinutes() + change;
-                m = (m < 0) ? 59 : (m > 59) ? 0 : m; 
-                date.setMinutes(m);
-                $('#minute').html((m < 10 ? '0' : '') + m);
-            }
-            else if (state === 2) {
-                var s = date.getSeconds() + change;
-                s = (s < 0) ? 59 : (s > 59) ? 0 : s; 
-                date.setSeconds(s);
-                $('#seconds').html((s < 10 ? '0' : '') + s);
-            }
-        }
-    
-        $(function() {
-            var virtual_knob = document.getElementById("virtual_knob");
-            var mc = new Hammer(virtual_knob);
-            var prevAngle = -1;
-
-            mc.on("pan panstart panend tap", function(event) {
-                console.log(event.type)
-                if (event.type === 'panstart') {
-                prevAngle = -90;
-                }
-                else if (event.type === 'panend' || event.type === 'tap') {
-                moveFocus('next');
-                virtual_knob.style.transform = 'translateX(-50%) translateY(-50%) rotate(0deg)';
-                virtual_knob.style.webkitTransform = 'translateX(-50%) translateY(-50%) rotate(0deg)';
-                }
-                if (Math.abs(prevAngle - event.angle) > 300)
-                prevAngle = -prevAngle;
-                var a1 = Math.floor(event.angle / 30);
-                var a2 = Math.floor(prevAngle / 30);
-                if (a1 != a2) {
-                setValue(a1 - a2);
-                }
-
-                if (event.type !== 'panend' && event.type !== 'tap') {
-                virtual_knob.style.transform = 'translateX(-50%) translateY(-50%) rotate(' + (event.angle + 90) + 'deg)';
-                virtual_knob.style.webkitTransform = 'translateX(-50%) translateY(-50%) rotate(' + (event.angle + 90) + 'deg)';
-                }
-                prevAngle = event.angle;
-            });
-
-            $('#hour').html(date.getHours());
-            $('#minute').html(date.getMinutes());
-            $('#seconds').html(date.getSeconds());
-    
-            $('#hour').click(function () { setFocus(0); });
-            $('#minute').click(function () { setFocus(1); });
-            $('#seconds').click(function () { setFocus(2); });
-        });
-    </script>
 </body>
 </html>
