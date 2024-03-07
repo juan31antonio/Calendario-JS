@@ -22,9 +22,8 @@ hr{
     vertical-align: middle;
     width: 100%;
     display: inline-block;
-    border: 0.1em solid black;
-    margin-top: 1em;  
-    margin-bottom: 1em; 
+    border: 0.1em solid black; 
+    margin-bottom: 2em; 
 }
 
 h1 {
@@ -49,7 +48,6 @@ input::placeholder{
 
 
 button{
-    margin-top: 1.5em;
     border-radius: 2em;
     border: 0px;
     background-color:#575757;
@@ -70,4 +68,76 @@ button:active {
     background-color: #797777;
     box-shadow: 0px 0px 0.3em 0.1em rgb(27, 27, 27);
     text-shadow: 0em 0em 2em rgb(255, 255, 255);
+}
+#arrows{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: -1em;
+    margin-top: -0.20em;
+    width: 18em;
+    justify-content: space-evenly;
+}
+#arrows div{
+    font-size: 3em;
+    visibility: hidden;
+}
+#green{
+    background-color: green;
+    border-radius: 2em 0px 0px 2em;
+    transition: background-color 0.3s ease;
+}
+#green:active{
+    background-color: rgba(0, 128, 0, 0.445);
+}
+#orange{
+    background-color: orange;
+    transition: background-color 0.3s ease;
+}
+#orange:active{
+    background-color: rgba(255, 166, 0, 0.445);
+}
+#red{
+    background-color: red;
+    transition: background-color 0.3s ease;
+}
+#red:active{
+    background-color: rgba(255, 0, 0, 0.445);
+}
+#purple{
+    background-color: purple;
+    transition: background-color 0.3s ease;
+}
+#purple:active{
+    background-color: rgba(128, 0, 128, 0.445);
+}
+#dark_blue{
+    background-color: darkblue;
+    transition: background-color 0.3s ease;
+}
+#dark_blue:active{
+    background-color: rgba(0, 0, 139, 0.445);
+}
+#light_blue{
+    background-color: lightskyblue;
+    border-radius:  0px 2em 2em 0px ;
+    transition: background-color 0.3s ease;
+}
+#light_blue:active{
+    background-color: rgba(135, 206, 250, 0.445);
+}
+#div-container{
+    display: flex;
+    flex-direction: row;
+    border-radius: 2em;
+}
+#div-container div{
+    height: 2em;
+    width: 2.9em;
+    border: solid 0.1em black;
+}
+#time{
+    margin-bottom: 1.5em;
+    width: 22em;
+    height: 3em;
+    border-radius: 1em;
 }

@@ -143,7 +143,7 @@ button:active {
 #arrows{
     display: flex;
     flex-direction: row;
-    margin-bottom: -0.5em;
+    margin-bottom: -1em;
     margin-top: -0.20em;
     width: 18em;
     justify-content: space-evenly;
@@ -151,4 +151,10 @@ button:active {
 #arrows div{
     font-size: 3em;
     visibility: hidden;
+}
+#time{
+    margin-bottom: 1.5em;
+    width: 22em;
+    height: 3em;
+    border-radius: 1em;
 }

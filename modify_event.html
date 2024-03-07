@@ -5,26 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calendar</title>
   <link rel="stylesheet" href="modify_event_sytle.css">
-  <script>
-    function toggleVisibility(clickedDiv) {
-        const triangulos = document.querySelectorAll("#arrows div");
-        
-        for (const arrow of triangulos) {
-            arrow.style.visibility = "hidden";
-        }
-
-        const divs = document.querySelectorAll("#div-container .box");
-        const index = Array.from(divs).indexOf(clickedDiv);
-        triangulos[index].style.visibility = "visible";
-        
-    }
-</script>
+  <script src="arrow.js"></script>
 </head>
 <body>
   <div id="container">
     <h1>Event Name</h1>
     <div id="inputs">
-      <input type="text" placeholder="Description"><input type="time" placeholder="Time">
+      <input type="text" placeholder="Description">
+      <button id="time">Time</button>
       <div class="dropdown">
         <span>
           <div id="div-container">

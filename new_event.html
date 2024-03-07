@@ -4,15 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar</title>
-    <link rel="stylesheet" href="login_style.css">
+    <link rel="stylesheet" href="new_event_style.css">
+    <script src="arrow.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.10/dist/sweetalert2.all.min.js"></script>
+    <script>
+        function timer(){
+            swal("time_select.html");
+        }
+    </script>
 </head>
 <body>
     <div id="container">   
         <h1>New Event</h1>
         <div id="inputs">
             <input type="text" placeholder="Description"required>
-            <input type="time" required>
-            <input type="color" class="color" required>
+            <button id="time" onclick="timer()">Time</button>
+            <div class="dropdown">
+                <span>
+                    <div id="div-container">
+                        <div id="green" class="box" onclick="toggleVisibility(this)"></div>
+                        <div id="orange" class="box" onclick="toggleVisibility(this)"></div>
+                        <div id="red" class="box" onclick="toggleVisibility(this)"></div>
+                        <div id="purple" class="box" onclick="toggleVisibility(this)"></div>
+                        <div id="dark_blue" class="box" onclick="toggleVisibility(this)"></div>
+                        <div id="light_blue" class="box" onclick="toggleVisibility(this)"></div>
+                    </div>
+                </span>
+            </div>
+            <div id="arrows">
+                <div>^</div>
+                <div>^</div>
+                <div>^</div>
+                <div>^</div>
+                <div>^</div>
+                <div>^</div>
+            </div>
         </div>
         <hr>
         <button>Create new event</button>

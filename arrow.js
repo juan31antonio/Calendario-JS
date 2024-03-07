@@ -1,9 +1,12 @@
-const divs = document.getElementsByClassName("box");
-function arrow(){
-    let element = document.querySelector();
-    element = element.id;
-    let div = document.getElementById(element);
-    let x = div.offsetLeft;
-    let arrow = document.getElementById("arrow");
-    arrow.style.left = '${x}px'
+function toggleVisibility(clickedDiv) {
+    const triangulos = document.querySelectorAll("#arrows div");
+    
+    for (const arrow of triangulos) {
+        arrow.style.visibility = "hidden";
+    }
+
+    const divs = document.querySelectorAll("#div-container .box");
+    const index = Array.from(divs).indexOf(clickedDiv);
+    triangulos[index].style.visibility = "visible";
+    
 }
