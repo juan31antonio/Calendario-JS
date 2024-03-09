@@ -5,4 +5,4 @@ function timer(){
         padding: 0,
         customClass: 'sweetalert-lg',
       });
-  }
+}
