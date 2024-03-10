@@ -1,158 +1,143 @@
-*, *:before, *:after {
-  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
-  }
-  
-  body {
-   overflow: hidden;
-   font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-   font-weight: 100;
-   color: rgba(255, 255, 255, 1);
-   margin: 0;
-   padding: 0;
-   background: #4A4A4A;
-   -webkit-touch-callout: none;
-   -webkit-user-select: none;
-   -khtml-user-select: none;
-   -moz-user-select: none;
-   -ms-user-select: none;
-   user-select: none;
-  }
-  
-  #calendar {
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    width: 420px;
-    margin: 0 auto;
-    height: 570px;
-    overflow: hidden;
-  }
-  
-  .header {
-    height: 50px;
-    width: 420px;
-    background: rgba(66, 66, 66, 1);
-    text-align: center;
-    position:relative;
-    z-index: 100;
-  }
-  
-  .header h1 {
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    line-height: 50px;
-    font-weight: 100;
-    letter-spacing: 1px;
-  }
-  
-  .left, .right {
-    position: absolute;
-    width: 0px;
-    height: 0px;
-    border-style: solid;
-    top: 50%;
-    margin-top: -7.5px;
-    cursor: pointer;
-  }
-  
-  .left {
-    border-width: 7.5px 10px 7.5px 0;
-    border-color: transparent rgba(160, 159, 160, 1) transparent transparent;
-    left: 20px;
-  }
-  
-  .right {
-    border-width: 7.5px 0 7.5px 10px;
-    border-color: transparent transparent transparent rgba(160, 159, 160, 1);
-    right: 20px;
-  }
-  
-  .month {
-    /*overflow: hidden;*/
+/* Reset default box-sizing for consistent sizing */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/* Body styles for full screen */
+body {
+  overflow: hidden;
+  font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  color: rgba(255, 255, 255, 1);
+  margin: 0;
+  padding: 0;
+  background: #4a4a4a;
+  height: 100vh;
+}
+
+/* Calendar container takes up full viewport */
+#calendar {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transform: translate3d(0, 0, 0); /* Remove unnecessary transform */
+}
+
+/* Header takes up 10% of calendar height */
+.header {
+  height: 10%;
+  width: 100%;
+  background: rgba(66, 66, 66, 1);
+  text-align: center;
+  position: relative;
+  z-index: 100;
+}
+
+/* Header title styles */
+.header h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 2vw; /* Adjust font size based on viewport width */
+  line-height: 100%; /* Match header height */
+  font-weight: 100;
+  letter-spacing: 1px;
+}
+
+/* Left and right arrow styles */
+.left,
+.right {
+  position: absolute;
+  width: 1.5%; /* Adjust width for better proportions */
+  height: 20%; /* Adjust height for better placement */
+  border-style: solid;
+  top: 50%;
+  margin-top: -10%; /* Adjust margin for better centering */
+  cursor: pointer;
+}
+
+/* Left arrow styles */
+.left {
+  border-width: 0.75vw 1vw 0.75vw 0; /* Border width based on viewport width */
+  border-color: transparent rgba(160, 159, 160, 1) transparent transparent;
+  left: 2vw; /* Adjust left position for better spacing */
+}
+
+/* Right arrow styles */
+.right {
+  border-width: 0.75vw 0 0.75vw 1vw;
+  border-color: transparent transparent transparent rgba(160, 159, 160, 1);
+  right: 2vw; /* Adjust right position for better spacing */
+}
+
+/* Month styles (hidden) */
+.month {
+  opacity: 0;
+}
+
+.month.new {
+  animation: fadeIn 1s ease-out;
+  opacity: 1;
+}
+
+/* Animation styles can be removed if not needed */
+@keyframes fadeIn {
+  from {
     opacity: 0;
   }
-  
-  .month.new {
-    -webkit-animation: fadeIn 1s ease-out;
-    opacity: 1;
-  }
-  
-  .month.in.next {
-    -webkit-animation: moveFromTopFadeMonth .4s ease-out;
-    -moz-animation: moveFromTopFadeMonth .4s ease-out;
-    animation: moveFromTopFadeMonth .4s ease-out;
-    opacity: 1;
-  }
-  
-  .month.out.next {
-    -webkit-animation: moveToTopFadeMonth .4s ease-in;
-    -moz-animation: moveToTopFadeMonth .4s ease-in;
-    animation: moveToTopFadeMonth .4s ease-in;
-    opacity: 1;
-  }
-  
-  .month.in.prev {
-    -webkit-animation: moveFromBottomFadeMonth .4s ease-out;
-    -moz-animation: moveFromBottomFadeMonth .4s ease-out;
-    animation: moveFromBottomFadeMonth .4s ease-out;
-    opacity: 1;
-  }
-  
-  .month.out.prev {
-    -webkit-animation: moveToBottomFadeMonth .4s ease-in;
-    -moz-animation: moveToBottomFadeMonth .4s ease-in;
-    animation: moveToBottomFadeMonth .4s ease-in;
-    opacity: 1;
-  }
-  
-  .week {
-   background: #4A4A4A;
-  }
-  
-  .day {
-    display: inline-block;
-    width: 60px;
-    padding: 10px;
-    text-align: center;
-    vertical-align: top;
-    cursor: pointer;
-    background: #4A4A4A;
-    position: relative;
-    z-index: 100;
-  }
-  
-  .day.other {
-   color: rgba(255, 255, 255, .3);
-  }
-  
-  .day.today {
-    color: rgba(156, 202, 235, 1);
-  }
-  
-  .day-name {
-    font-size: 9px;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-    color: rgba(255, 255, 255, .5);
-    letter-spacing: .7px;
-  }
+}
+
+/* Week row styles */
+.week {
+  background: #4a4a4a;
+}
+
+/* Day styles */
+.day {
+  display: inline-block;
+  width: calc(14.28% - 2px); /* Account for borders and spacing */
+  padding: 1.5vw; /* Adjust padding based on viewport width */
+  text-align: center;
+  vertical-align: top;
+  cursor: pointer;
+  background: #4a4a4a;
+  position: relative;
+  z-index: 100;
+}
+
+/* Styles for days outside current month */
+.day.other {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Styles for today */
+.day.today {
+  color: rgba(156, 202, 235, 1);
+}
+
+/* Day name styles */
+.day-name {
+  font-size: 1vw; 
+  text-transform: uppercase;
+  margin-bottom: 0.5vw; 
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.7px;
+}
   
   .day-number {
-    font-size: 24px;
+    font-size: 2.5vw; 
     letter-spacing: 1.5px;
   }
-  
-  
   .day .day-events {
     list-style: none;
-    margin-top: 3px;
+    margin-top: 0.3vw; /* Ajusta el margen superior */
     text-align: center;
     height: 12px;
     line-height: 6px;
     overflow: hidden;
   }
-  
   .day .day-events span {
     vertical-align: top;
     display: inline-block;
@@ -168,28 +153,14 @@
   .orange { background: rgba(247, 167, 0, 1); }
   .green { background: rgba(153, 198, 109, 1); }
   .yellow { background: rgba(249, 233, 0, 1); }
-  
   .details {
     position: relative;
-    width: 420px;
-    height: 75px;
+    width: 100%; 
+    height: 18.75vh;
     background: rgba(164, 164, 164, 1);
-    margin-top: 5px;
+    margin-top: 1.25vh; 
     border-radius: 4px;
   }
-  
-  .details.in {
-    -webkit-animation: moveFromTopFade .5s ease both;
-    -moz-animation: moveFromTopFade .5s ease both;
-    animation: moveFromTopFade .5s ease both;
-  }
-  
-  .details.out {
-    -webkit-animation: moveToTopFade .5s ease both;
-    -moz-animation: moveToTopFade .5s ease both;
-    animation: moveToTopFade .5s ease both;
-  }
-  
   .arrow {
     position: absolute;
     top: -5px;
@@ -202,89 +173,36 @@
     border-color: transparent transparent rgba(164, 164, 164, 1) transparent;
     transition: all 0.7s ease;
   }
-  
   .events {
-    height: 75px;
-    padding: 7px 0;
+    height: 100%; 
+    padding: 1.75vh 0; 
     overflow-y: auto;
     overflow-x: hidden;
   }
-  
-  .events.in {
-    -webkit-animation: fadeIn .3s ease both;
-    -moz-animation: fadeIn .3s ease both;
-    animation: fadeIn .3s ease both;
-  }
-  
-  .events.in {
-    -webkit-animation-delay: .3s;
-    -moz-animation-delay: .3s;
-    animation-delay: .3s;
-  }
-  
-  .details.out .events {
-    -webkit-animation: fadeOutShrink .4s ease both;
-    -moz-animation: fadeOutShink .4s ease both;
-    animation: fadeOutShink .4s ease both;
-  }
-  
-  .events.out {
-    -webkit-animation: fadeOut .3s ease both;
-    -moz-animation: fadeOut .3s ease both;
-    animation: fadeOut .3s ease both;
-  }
-  
-  .event {
-    font-size: 16px;
-    line-height: 22px;
-    letter-spacing: .5px;
-    padding: 2px 16px;
-    vertical-align: top;
-  }
-  
-  .event.empty {
-    color: #eee;
-  }
-  
-  .event-category {
-    height: 10px;
-    width: 10px;
-    display: inline-block;
-    margin: 6px 0 0;
-    vertical-align: top;
-  }
-  
-  .event span {
-    display: inline-block;
-    padding: 0 0 0 7px;
-  }
-  
   .legend {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 30px;
+    height: 7.5vh; 
     background: rgba(60, 60, 60, 1);
-    line-height: 30px;
-  
+    line-height: 7.5vh; 
   }
-  
   .entry {
     position: relative;
-    padding: 0 0 0 25px;
-    font-size: 13px;
+    padding: 0 0 0 2.5vw; 
+    font-size: 1.5vw;
     display: inline-block;
-    line-height: 30px;
+    line-height: 7.5vh; 
     background: transparent;
   }
   
   .entry:after {
     position: absolute;
     content: '';
-    height: 5px;
-    width: 5px;
-    top: 12px;
-    left: 14px;
+    height: 1.25vh; 
+    width: 1.25vh; 
+    top: 3vh; 
+    left: 3.5vw; 
   }
   
   .entry.blue:after { background: rgba(156, 202, 235, 1); }
