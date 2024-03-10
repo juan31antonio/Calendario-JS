@@ -5,91 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario</title>
     <link rel="stylesheet" href="style/calendar.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css" rel="stylesheet"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/css/datepicker.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/i18n/datepicker.en.js"></script>
-    <script src="calendar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+    <script src="calendar.js" defer></script>
+    <style>
+        /* Estilo para el iframe */
+        #miIframe {
+            display: none; /* Por defecto, ocultamos el iframe */
+            position: fixed; /* Posicionamiento fijo */
+            top: 0; /* Colocarlo en la parte superior */
+            left: 0; /* Colocarlo en la parte izquierda */
+            width: 100%; /* Ancho del 100% de la ventana */
+            height: 100%; /* Altura del 100% de la ventana */
+            z-index: 9999; /* Índice de apilamiento alto para que esté encima de otros elementos */
+            border: none; /* Sin borde */
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo transparente */
+        }
+    </style>
 </head>
 <body>
-  <div class="p-5">
-    <h2 class="mb-4">Full Calendar</h2>
-    <div class="card">
-      <div class="card-body p-0">
-        <div id="calendar"></div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- calendar modal -->
-  <div id="modal-view-event" class="modal modal-top fade calendar-modal">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-body">
-            <h4 class="modal-title"><span class="event-icon"></span><span class="event-title"></span></h4>
-            <div class="event-body"></div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-  <div id="modal-view-event-add" class="modal modal-top fade calendar-modal">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <form id="add-event">
-          <div class="modal-body">
-          <h4>Add Event Detail</h4>        
-            <div class="form-group">
-              <label>Event name</label>
-              <input type="text" class="form-control" name="ename">
-            </div>
-            <div class="form-group">
-              <label>Event Date</label>
-              <input type='text' class="datetimepicker form-control" name="edate">
-            </div>        
-            <div class="form-group">
-              <label>Event Description</label>
-              <textarea class="form-control" name="edesc"></textarea>
-            </div>
-            <div class="form-group">
-              <label>Event Color</label>
-              <select class="form-control" name="ecolor">
-                <option value="fc-bg-default">fc-bg-default</option>
-                <option value="fc-bg-blue">fc-bg-blue</option>
-                <option value="fc-bg-lightgreen">fc-bg-lightgreen</option>
-                <option value="fc-bg-pinkred">fc-bg-pinkred</option>
-                <option value="fc-bg-deepskyblue">fc-bg-deepskyblue</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Event Icon</label>
-              <select class="form-control" name="eicon">
-                <option value="circle">circle</option>
-                <option value="cog">cog</option>
-                <option value="group">group</option>
-                <option value="suitcase">suitcase</option>
-                <option value="calendar">calendar</option>
-              </select>
-            </div>        
-        </div>
-          <div class="modal-footer">
-          <button type="submit" class="btn btn-primary" >Save</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>        
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
+  <div id='calendar'></div>
+  <iframe id="miIframe" src="new_event.html"></iframe>
 </body>
 </html>
