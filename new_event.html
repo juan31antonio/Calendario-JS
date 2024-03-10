@@ -21,9 +21,9 @@
 </head>
 <body onload="h1()">
     <div id="container">   
-        <h1 spellcheck="false">Event Name</h1>
+        <h1 spellcheck="false" onchange="letterCount().focus()">Event Name</h1>
         <div id="inputs">
-            <input type="text" placeholder="Description"required>
+            <input type="text" placeholder="Description" maxlength="37" required>
             <button id="time" onclick="timer()">Time</button>
             <div class="dropdown">
                 <span>

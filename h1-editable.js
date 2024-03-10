@@ -1,20 +1,15 @@
 function h1(){
-    const h1 = document.querySelector('h1');
-    h1.addEventListener('click', () => {
-    h1.contentEditable = true;
+    var h = document.querySelector('h1');
+    h.addEventListener('click', () => {
+    h.contentEditable = true;
     });
-    h1.addEventListener('keydown',letterCount());
+    h.addEventListener('keydown',letterCount);
 }
 function letterCount(event){
-    let words = count(h1);
-    console.log(words)
-    if(words >= 18){
+    var h = document.querySelector('h1');
+    let words = h.textContent;
+    if(words.length >= 18){
         event.preventDefault();
     }
 }
-function count(words){
-    var word = words.textContent;
-    let letters = word.split("");
-    return letters.length;
-}
-
+window.addEventListener('DOMContentLoaded', h1);
