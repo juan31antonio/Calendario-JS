@@ -6,6 +6,8 @@
     <title>Calendario</title>
     <link rel="stylesheet" href="style/calendar.css">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.10/dist/sweetalert2.all.min.js"></script>
     <script src="calendar.js" defer></script>
     <style>
         /* Estilo para el iframe */
@@ -20,9 +22,14 @@
             border: none; /* Sin borde */
             background-color: rgba(255, 255, 255, 0.8); /* Fondo transparente */
         }
+        .swal2-popup {
+            width: initial;
+            padding: initial;
+            background: #D9D9D9;
+        }
     </style>
 </head>
-<body>
+<body onload="">
   <div id='calendar'></div>
   <iframe id="miIframe" src="new_event.html"></iframe>
 </body>
