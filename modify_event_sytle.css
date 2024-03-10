@@ -22,6 +22,7 @@ hr{
     border: 0.1em solid black;
     margin-bottom: 2em; 
     width: 18em;
+
 }
 
 h1 {
@@ -86,7 +87,7 @@ input{
 input::placeholder{
     color: white;
 }
-button{
+button:not(.button){
     border-radius: 2em;
     border: 0px;
     background-color:#575757;
@@ -157,4 +158,12 @@ button:active {
     width: 22em;
     height: 3em;
     border-radius: 1em;
+}
+#container-trash{
+    position: absolute;
+    top: 33%;
+    left: 75%;
+    transform: translate(-33%, -75%);
+    border-radius: 2%;
+    margin-left: 1em;
 }

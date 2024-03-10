@@ -5,37 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calendar</title>
   <link rel="stylesheet" href="modify_event_sytle.css">
+  <link rel="stylesheet" href="trash.css">
   <script src="arrow.js"></script>
+  <script src="trash.js"></script>
+  <script src="h1-editable.js"></script>
 </head>
-<body>
-  <div id="container">
-    <h1>Event Name</h1>
-    <div id="inputs">
-      <input type="text" placeholder="Description">
-      <button id="time">Time</button>
-      <div class="dropdown">
-        <span>
-          <div id="div-container">
-            <div id="green" class="box" onclick="toggleVisibility(this)"></div>
-            <div id="orange" class="box" onclick="toggleVisibility(this)"></div>
-            <div id="red" class="box" onclick="toggleVisibility(this)"></div>
-            <div id="purple" class="box" onclick="toggleVisibility(this)"></div>
-            <div id="dark_blue" class="box" onclick="toggleVisibility(this)"></div>
-            <div id="light_blue" class="box" onclick="toggleVisibility(this)"></div>
-          </div>
-        </span>
-      </div>
-      <div id="arrows">
-        <div>^</div>
-        <div>^</div>
-        <div>^</div>
-        <div>^</div>
-        <div>^</div>
-        <div>^</div>
-      </div>
+<body onload="onload(),h1()">
+  <div id="mark">
+    <div id="container">
+      <h1 spellcheck="false">Event Name</h1>
+      <div id="inputs">
+        <input type="text" placeholder="Description">
+        <button id="time">Time</button>
+        <div class="dropdown">
+          <span>
+            <div id="div-container">
+              <div id="green" class="box" onclick="toggleVisibility(this)"></div>
+              <div id="orange" class="box" onclick="toggleVisibility(this)"></div>
+              <div id="red" class="box" onclick="toggleVisibility(this)"></div>
+              <div id="purple" class="box" onclick="toggleVisibility(this)"></div>
+              <div id="dark_blue" class="box" onclick="toggleVisibility(this)"></div>
+              <div id="light_blue" class="box" onclick="toggleVisibility(this)"></div>
+            </div>
+          </span>
+        </div>
+        <div id="arrows">
+          <div>^</div>
+          <div>^</div>
+          <div>^</div>
+          <div>^</div>
+          <div>^</div>
+          <div>^</div>
+        </div>
     </div>
     <hr>
     <button>Confirm Changes</button>
+    </div>
+    <div id="container-trash">
+      <button class="button">
+        <div class="trash">
+            <div class="top">
+                <div class="paper"></div>
+            </div>
+            <div class="box"></div>
+            <div class="check">
+                <svg viewBox="0 0 8 6">
+                    <polyline points="1 3.4 2.71428571 5 7 1"></polyline>
+                </svg>
+            </div>
+        </div>
+        <span>Delete Event</span>
+      </button>
+    </div>
   </div>
+  
 </body>
 </html>
