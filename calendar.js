@@ -1,256 +1,161 @@
-//global variables
-var monthEl = $(".c-main");
-var dataCel = $(".c-cal__cel");
-var dateObj = new Date();
-var month = dateObj.getUTCMonth() + 1;
-var day = dateObj.getUTCDate();
-var year = dateObj.getUTCFullYear();
-var monthText = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
-];
-var indexMonth = month;
-var todayBtn = $(".c-today__btn");
-var addBtn = $(".js-event__add");
-var saveBtn = $(".js-event__save");
-var closeBtn = $(".js-event__close");
-var winCreator = $(".js-event__creator");
-var inputDate = $(this).data();
-today = year + "-" + month + "-" + day;
-
-
-// ------ set default events -------
-function defaultEvents(dataDay,dataName,dataNotes,classTag){
-  var date = $('*[data-day='+dataDay+']');
-  date.attr("data-name", dataName);
-  date.attr("data-notes", dataNotes);
-  date.addClass("event");
-  date.addClass("event--" + classTag);
-}
-
-defaultEvents(today, 'YEAH!','Today is your day','important');
-defaultEvents('2022-12-25', 'MERRY CHRISTMAS','A lot of gift!!!!','festivity');
-defaultEvents('2022-05-04', "LUCA'S BIRTHDAY",'Another gifts...?','birthday');
-defaultEvents('2022-03-03', "MY LADY'S BIRTHDAY",'A lot of money to spent!!!!','birthday');
-
-
-// ------ functions control -------
-
-//button of the current day
-todayBtn.on("click", function() {
-  if (month < indexMonth) {
-    var step = indexMonth % month;
-    movePrev(step, true);
-  } else if (month > indexMonth) {
-    var step = month - indexMonth;
-    moveNext(step, true);
-  }
-});
-
-//higlight the cel of current day
-dataCel.each(function() {
-  if ($(this).data("day") === today) {
-    $(this).addClass("isToday");
-    fillEventSidebar($(this));
-  }
-});
-
-//window event creator
-addBtn.on("click", function() {
-  winCreator.addClass("isVisible");
-  $("body").addClass("overlay");
-  dataCel.each(function() {
-    if ($(this).hasClass("isSelected")) {
-      today = $(this).data("day");
-      document.querySelector('input[type="date"]').value = today;
-    } else {
-      document.querySelector('input[type="date"]').value = today;
-    }
+jQuery(document).ready(function(){
+  jQuery('.datetimepicker').datepicker({
+      timepicker: true,
+      language: 'en',
+      range: true,
+      multipleDates: true,
+		  multipleDatesSeparator: " - "
+    });
+  jQuery("#add-event").submit(function(){
+      alert("Submitted");
+      var values = {};
+      $.each($('#add-event').serializeArray(), function(i, field) {
+          values[field.name] = field.value;
+      });
+      console.log(
+        values
+      );
   });
 });
-closeBtn.on("click", function() {
-  winCreator.removeClass("isVisible");
-  $("body").removeClass("overlay");
-});
-saveBtn.on("click", function() {
-  var inputName = $("input[name=name]").val();
-  var inputDate = $("input[name=date]").val();
-  var inputNotes = $("textarea[name=notes]").val();
-  var inputTag = $("select[name=tags]")
-    .find(":selected")
-    .text();
 
-  dataCel.each(function() {
-    if ($(this).data("day") === inputDate) {
-      if (inputName != null) {
-        $(this).attr("data-name", inputName);
-      }
-      if (inputNotes != null) {
-        $(this).attr("data-notes", inputNotes);
-      }
-      $(this).addClass("event");
-      if (inputTag != null) {
-        $(this).addClass("event--" + inputTag);
-      }
-      fillEventSidebar($(this));
-    }
-  });
-
-  winCreator.removeClass("isVisible");
-  $("body").removeClass("overlay");
-  $("#addEvent")[0].reset();
-});
-
-//fill sidebar event info
-function fillEventSidebar(self) {
-  $(".c-aside__event").remove();
-  var thisName = self.attr("data-name");
-  var thisNotes = self.attr("data-notes");
-  var thisImportant = self.hasClass("event--important");
-  var thisBirthday = self.hasClass("event--birthday");
-  var thisFestivity = self.hasClass("event--festivity");
-  var thisEvent = self.hasClass("event");
+(function () {    
+    'use strict';
+    // ------------------------------------------------------- //
+    // Calendar
+    // ------------------------------------------------------ //
+	jQuery(function() {
+		// page is ready
+		jQuery('#calendar').fullCalendar({
+			themeSystem: 'bootstrap4',
+			// emphasizes business hours
+			businessHours: false,
+			defaultView: 'month',
+			// event dragging & resizing
+			editable: true,
+			// header
+			header: {
+				left: 'title',
+				center: 'month,agendaWeek,agendaDay',
+				right: 'today prev,next'
+			},
+			events: [
+				{
+					title: 'Barber',
+					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+					start: '2023-05-05',
+					end: '2023-05-05',
+					className: 'fc-bg-default',
+					icon : "circle"
+				},
+				{
+					title: 'Flight Paris',
+					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+					start: '2023-08-08T14:00:00',
+					end: '2023-08-08T20:00:00',
+					className: 'fc-bg-deepskyblue',
+					icon : "cog",
+					allDay: false
+				},
+				{
+					title: 'Team Meeting',
+					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+					start: '2023-07-10T13:00:00',
+					end: '2023-07-10T16:00:00',
+					className: 'fc-bg-pinkred',
+					icon : "group",
+					allDay: false
+				},
+				{
+					title: 'Meeting',
+					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+					start: '2023-08-12',
+					className: 'fc-bg-lightgreen',
+					icon : "suitcase"
+				},
+				{
+					title: 'Conference',
+					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+					start: '2023-08-13',
+					end: '2023-08-15',
+					className: 'fc-bg-blue',
+					icon : "calendar"
+				},
+				{
+					title: 'Baby Shower',
+					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+					start: '2023-08-13',
+					end: '2023-08-14',
+					className: 'fc-bg-default',
+					icon : "child"
+				},
+				{
+					title: 'Birthday',
+					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+					start: '2023-09-13',
+					end: '2023-09-14',
+					className: 'fc-bg-default',
+					icon : "birthday-cake"
+				},
+				{
+					title: 'Restaurant',
+					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+					start: '2023-10-15T09:30:00',
+					end: '2023-10-15T11:45:00',
+					className: 'fc-bg-default',
+					icon : "glass",
+					allDay: false
+				},
+				{
+					title: 'Dinner',
+					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+					start: '2023-11-15T20:00:00',
+					end: '2023-11-15T22:30:00',
+					className: 'fc-bg-default',
+					icon : "cutlery",
+					allDay: false
+				},
+				{
+					title: 'Shooting',
+					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+					start: '2023-08-25',
+					end: '2023-08-25',
+					className: 'fc-bg-blue',
+					icon : "camera"
+				},
+				{
+					title: 'Go Space :)',
+					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+					start: '2023-12-27',
+					end: '2023-12-27',
+					className: 'fc-bg-default',
+					icon : "rocket"
+				},
+				{
+					title: 'Dentist',
+					description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+					start: '2023-12-29T11:30:00',
+					end: '2023-12-29T012:30:00',
+					className: 'fc-bg-blue',
+					icon : "medkit",
+					allDay: false
+				}
+			],
+			eventRender: function(event, element) {
+				if(event.icon){
+					element.find(".fc-title").prepend("<i class='fa fa-"+event.icon+"'></i>");
+				}
+			  },
+			dayClick: function() {
+				jQuery('#modal-view-event-add').modal();
+			},
+			eventClick: function(event, jsEvent, view) {
+			        jQuery('.event-icon').html("<i class='fa fa-"+event.icon+"'></i>");
+					jQuery('.event-title').html(event.title);
+					jQuery('.event-body').html(event.description);
+					jQuery('.eventUrl').attr('href',event.url);
+					jQuery('#modal-view-event').modal();
+			},
+		})
+	});
   
-  switch (true) {
-    case thisImportant:
-      $(".c-aside__eventList").append(
-        "<p class='c-aside__event c-aside__event--important'>" +
-        thisName +
-        " <span> • " +
-        thisNotes +
-        "</span></p>"
-      );
-      break;
-    case thisBirthday:
-      $(".c-aside__eventList").append(
-        "<p class='c-aside__event c-aside__event--birthday'>" +
-        thisName +
-        " <span> • " +
-        thisNotes +
-        "</span></p>"
-      );
-      break;
-    case thisFestivity:
-      $(".c-aside__eventList").append(
-        "<p class='c-aside__event c-aside__event--festivity'>" +
-        thisName +
-        " <span> • " +
-        thisNotes +
-        "</span></p>"
-      );
-      break;
-    case thisEvent:
-      $(".c-aside__eventList").append(
-        "<p class='c-aside__event'>" +
-        thisName +
-        " <span> • " +
-        thisNotes +
-        "</span></p>"
-      );
-      break;
-   }
-};
-dataCel.on("click", function() {
-  var thisEl = $(this);
-  var thisDay = $(this)
-  .attr("data-day")
-  .slice(8);
-  var thisMonth = $(this)
-  .attr("data-day")
-  .slice(5, 7);
-
-  fillEventSidebar($(this));
-
-  $(".c-aside__num").text(thisDay);
-  $(".c-aside__month").text(monthText[thisMonth - 1]);
-
-  dataCel.removeClass("isSelected");
-  thisEl.addClass("isSelected");
-
-});
-
-//function for move the months
-function moveNext(fakeClick, indexNext) {
-  for (var i = 0; i < fakeClick; i++) {
-    $(".c-main").css({
-      left: "-=100%"
-    });
-    $(".c-paginator__month").css({
-      left: "-=100%"
-    });
-    switch (true) {
-      case indexNext:
-        indexMonth += 1;
-        break;
-    }
-  }
-}
-function movePrev(fakeClick, indexPrev) {
-  for (var i = 0; i < fakeClick; i++) {
-    $(".c-main").css({
-      left: "+=100%"
-    });
-    $(".c-paginator__month").css({
-      left: "+=100%"
-    });
-    switch (true) {
-      case indexPrev:
-        indexMonth -= 1;
-        break;
-    }
-  }
-}
-
-//months paginator
-function buttonsPaginator(buttonId, mainClass, monthClass, next, prev) {
-  switch (true) {
-    case next:
-      $(buttonId).on("click", function() {
-        if (indexMonth >= 2) {
-          $(mainClass).css({
-            left: "+=100%"
-          });
-          $(monthClass).css({
-            left: "+=100%"
-          });
-          indexMonth -= 1;
-        }
-        return indexMonth;
-      });
-      break;
-    case prev:
-      $(buttonId).on("click", function() {
-        if (indexMonth <= 11) {
-          $(mainClass).css({
-            left: "-=100%"
-          });
-          $(monthClass).css({
-            left: "-=100%"
-          });
-          indexMonth += 1;
-        }
-        return indexMonth;
-      });
-      break;
-  }
-}
-
-buttonsPaginator("#next", monthEl, ".c-paginator__month", false, true);
-buttonsPaginator("#prev", monthEl, ".c-paginator__month", true, false);
-
-//launch function to set the current month
-moveNext(indexMonth - 1, false);
-
-//fill the sidebar with current day
-$(".c-aside__num").text(day);
-$(".c-aside__month").text(monthText[month - 1]);
+})(jQuery);

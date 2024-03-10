@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.10/dist/sweetalert2.all.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="timer.js"></script>
+    <script src="h1-editable.js"></script>
     <style>
         .swal2-popup {
             width: initial;
@@ -17,9 +18,9 @@
         }
     </style>
 </head>
-<body>
+<body onload="h1()">
     <div id="container">   
-        <h1>New Event</h1>
+        <h1 spellcheck="false">Event Name</h1>
         <div id="inputs">
             <input type="text" placeholder="Description"required>
             <button id="time" onclick="timer()">Time</button>

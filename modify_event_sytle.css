@@ -22,11 +22,11 @@ hr{
     border: 0.1em solid black;
     margin-bottom: 2em; 
     width: 18em;
-
 }
 
 h1 {
     margin-bottom: 1em;
+    border-bottom: 1px solid #000000;
 }
 
 input{
