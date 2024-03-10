@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="timer.js"></script>
     <script src="h1-editable.js"></script>
-    <script src="calendar.js" defer></script>
+    <script src="eventData.js"></script>
     <style>
         .swal2-popup {
             width: initial;
@@ -19,7 +19,7 @@
         }
     </style>
 </head>
-<body onload="h1(),closeIframeIfClickedOutside()">
+<body onload="h1()">
     <div id="container">   
         <h1 spellcheck="false">Event Name</h1>
         <div id="inputs">
@@ -47,7 +47,7 @@
             </div>
         </div>
         <hr>
-        <button>Create new event</button>
+        <button id="close" onclick="eventData()">Create new event</button>
     </div>
 </body>
 </html> 
