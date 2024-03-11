@@ -1,9 +1,15 @@
-var date = new Date();
-        var hours = Array.from({length: 24}, (_, i) => i); 
+if(localStorage.getItem("fecha")){
+    var date = new Date(localStorage.getItem("fecha"));
+}
+else{
+   var date = new Date(); 
+}
+        var hours = Array.from({length: 24}, (_, i) => i);
         var minutes = Array.from({length: 60}, (_, i) => i); 
-        var seconds = Array.from({length: 60}, (_, i) => i); 
+        var seconds = Array.from({length: 60}, (_, i) => i);
         var state = 0;
-    
+        var fecha = date.toISOString();
+        localStorage.setItem("fecha",fecha);
         function moveFocus(direction) {
             if (direction === 'next') {
                 if (state < 2) {
@@ -43,18 +49,24 @@ var date = new Date();
                 var h = date.getHours() + change;
                 h = (h < 0) ? 23 : (h > 23) ? 0 : h;
                 date.setHours(h);
+                var fecha = date.toISOString();
+                localStorage.setItem("fecha",fecha);
                 $('#hour').html((h < 10 ? '0' : '') + h);
             }
             else if (state === 1) {
                 var m = date.getMinutes() + change;
                 m = (m < 0) ? 59 : (m > 59) ? 0 : m; 
                 date.setMinutes(m);
+                var fecha = date.toISOString();
+                localStorage.setItem("fecha",fecha);
                 $('#minute').html((m < 10 ? '0' : '') + m);
             }
             else if (state === 2) {
                 var s = date.getSeconds() + change;
                 s = (s < 0) ? 59 : (s > 59) ? 0 : s; 
                 date.setSeconds(s);
+                var fecha = date.toISOString();
+                localStorage.setItem("fecha",fecha);
                 $('#seconds').html((s < 10 ? '0' : '') + s);
             }
         }
@@ -92,7 +104,7 @@ var date = new Date();
             $('#hour').html(date.getHours());
             $('#minute').html(date.getMinutes());
             $('#seconds').html(date.getSeconds());
-    
+            
             $('#hour').click(function () { setFocus(0); });
             $('#minute').click(function () { setFocus(1); });
             $('#seconds').click(function () { setFocus(2); });
