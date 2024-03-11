@@ -101,9 +101,9 @@ else{
                 prevAngle = event.angle;
             });
 
-            $('#hour').html(fecha.getHours() < 10 ? '0'+fecha.getHours():fecha.getHours());
-            $('#minute').html(fecha.getMinutes() < 10 ? '0'+fecha.getMinutes():fecha.getMinutes());
-            $('#seconds').html(fecha.getSeconds() < 10 ? '0'+fecha.getSeconds():fecha.getSeconds());
+            $('#hour').html(date.getHours() < 10 ? '0'+date.getHours():date.getHours());
+            $('#minute').html(date.getMinutes() < 10 ? '0'+date.getMinutes():date.getMinutes());
+            $('#seconds').html(date.getSeconds() < 10 ? '0'+date.getSeconds():date.getSeconds());
             
             $('#hour').click(function () { setFocus(0); });
             $('#minute').click(function () { setFocus(1); });
