@@ -47,27 +47,27 @@ else{
         function setValue(change) {
             if (state === 0) {
                 var h = date.getHours() + change;
-                h = (h < 0) ? 23 : (h > 23) ? 0 : h;
+                h = (h < 0) ? 23 : (h > 23) ? 0 :h;
                 date.setHours(h);
                 var fecha = date.toISOString();
                 localStorage.setItem("fecha",fecha);
-                $('#hour').html((h < 10 ? '0' : '') + h);
+                $('#hour').html((h < 10 ? '0' :'') + h);
             }
             else if (state === 1) {
                 var m = date.getMinutes() + change;
-                m = (m < 0) ? 59 : (m > 59) ? 0 : m; 
+                m = (m < 0) ? 59 :(m > 59) ? 0 :m; 
                 date.setMinutes(m);
                 var fecha = date.toISOString();
                 localStorage.setItem("fecha",fecha);
-                $('#minute').html((m < 10 ? '0' : '') + m);
+                $('#minute').html((m < 10 ? '0' :'') + m);
             }
             else if (state === 2) {
                 var s = date.getSeconds() + change;
-                s = (s < 0) ? 59 : (s > 59) ? 0 : s; 
+                s = (s < 0) ? 59 :(s > 59) ? 0 :s; 
                 date.setSeconds(s);
                 var fecha = date.toISOString();
                 localStorage.setItem("fecha",fecha);
-                $('#seconds').html((s < 10 ? '0' : '') + s);
+                $('#seconds').html((s < 10 ? '0' :'') + s);
             }
         }
     
@@ -101,9 +101,9 @@ else{
                 prevAngle = event.angle;
             });
 
-            $('#hour').html(date.getHours());
-            $('#minute').html(date.getMinutes());
-            $('#seconds').html(date.getSeconds());
+            $('#hour').html(fecha.getHours() < 10 ? '0'+fecha.getHours():fecha.getHours());
+            $('#minute').html(fecha.getMinutes() < 10 ? '0'+fecha.getMinutes():fecha.getMinutes());
+            $('#seconds').html(fecha.getSeconds() < 10 ? '0'+fecha.getSeconds():fecha.getSeconds());
             
             $('#hour').click(function () { setFocus(0); });
             $('#minute').click(function () { setFocus(1); });
