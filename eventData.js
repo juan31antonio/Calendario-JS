@@ -41,3 +41,7 @@ miBoton.addEventListener("click", () => {
 });
 });
 
+function clear(){
+    localStorage.clear();
+}
+

@@ -62,3 +62,7 @@ function parseEvent(calendar, dateStr){
         })}, 10);
 }
 
+function clear(){
+    localStorage.clear();
+}
+
