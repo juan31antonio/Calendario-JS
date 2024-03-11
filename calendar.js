@@ -9,10 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				showConfirmButton: false,
 				padding: 0,
 				customClass: 'sweetalert-lg',
-			}).then(() => {
-				eventData();
-				parseEvent(calendar)
-			  });
+			});
 		  },
     });
 	window.addEventListener("message", (event) => {
@@ -25,11 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function parseEvent(calendar){
-	var parseo = JSON.parse(localStorage.getItem('evento'));
-	calendar.addEvent({
-		title: parseo.title,
-		description: parseo.description,
-		start: '2024-03-11'
-	});
-	
+	setTimeout(() => {
+		var parseo = JSON.parse(localStorage.getItem('evento'));
+		calendar.addEvent({
+			title: parseo.title,
+			description: parseo.description,
+			start: '2024-03-11'
+		});
+	},10);
 }

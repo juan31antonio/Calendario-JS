@@ -9,7 +9,9 @@ function eventData(){
         start: time
       }
       localStorage.clear();
-      localStorage.setItem("evento",JSON.stringify(event));
+      setTimeout(() => {
+		  localStorage.setItem('evento', JSON.stringify(event));
+	    }, 0);
 }
 
 document.addEventListener('DOMContentLoaded', function() {

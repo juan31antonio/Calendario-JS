@@ -8,6 +8,8 @@ function timer(){
     .then(()=>{
       const date = localStorage.getItem("fecha");
       const fecha = new Date(date);
-      document.getElementById('time').textContent = `${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`;
+      document.getElementById('time').textContent = `${fecha.getHours() < 10 ? '0'+fecha.getHours():fecha.getHours()}:
+      ${fecha.getMinutes() < 10 ? '0'+fecha.getMinutes():fecha.getMinutes()}:
+      ${fecha.getSeconds() < 10 ? '0'+fecha.getSeconds():fecha.getSeconds()}`;
     });
 }
