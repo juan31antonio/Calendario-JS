@@ -1,14 +1,24 @@
+var event;
+export function obtenerNombre() {
+  return event;
+}
+
 
 function eventData(){
+    localStorage.clear();
     var tittle = document.querySelector('h1').textContent;
     var description = document.querySelector('input').value;
     var time = document.getElementById('time').textContent;
-    const event = {
+    event = {
         title: tittle,
         description: description,
         start: time
       }
-      localStorage.setItem("evento",JSON.stringify(event));
+      localStorage.setItem("evento",JSON.stringify(event),function() {
+  // Obtener el valor de la variable "nombre"
+  var nombre = localStorage.getItem("nombre");
+})
+      console.log(localStorage.getItem("evento"));
       
 }
 

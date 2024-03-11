@@ -23,10 +23,11 @@ document.addEventListener('DOMContentLoaded', function() {
     calendar.render();
 });
 
-function parseEvent(calendar){
+function parseEvent(calendar)
+import { obtenerNombre, obtenerEdad } from "eventData.js"
 	var parseo = JSON.parse(localStorage.getItem('evento'));
 	calendar.addEvent({
-		title: 'pwpw',
+		title: parseo.title,
 		description: parseo.description,
 		start: '2024-03-11'
 	});
