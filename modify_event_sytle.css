@@ -88,12 +88,12 @@ input::placeholder{
     color: white;
 }
 button:not(.button){
-    border-radius: 2em;
+    border-radius: 1em;
     border: 0px;
     background-color:#575757;
     color: white;
     padding: 1em;
-    width: 22em;
+    width: 10em;
 }
 #div-container{
     display: flex;
@@ -159,11 +159,7 @@ button:active {
     height: 3em;
     border-radius: 1em;
 }
-#container-trash{
-    position: absolute;
-    top: 33%;
-    left: 75%;
-    transform: translate(-33%, -75%);
-    border-radius: 2%;
-    margin-left: 1em;
+#buttons{
+    display: flex;
+    flex-direction: row;
 }

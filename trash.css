@@ -14,8 +14,7 @@
     outline: none;
     background: none;
     padding: 10px 24px;
-    border-radius: 7px;
-    min-width: 142px;
+    border-radius: 1em;
     -webkit-appearance: none;
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
@@ -27,9 +26,7 @@
     transition: transform .3s, box-shadow .3s, background .3s;
     span {
         display: block;
-        font-size: 14px;
         line-height: 25px;
-        font-weight: 600;
         opacity: var(--span-opacity, 1);
         transform: translateX(var(--span-x, 0)) translateZ(0);
         transition: transform .4s ease var(--span-delay, .2s), opacity .3s ease var(--span-delay, .2s);
