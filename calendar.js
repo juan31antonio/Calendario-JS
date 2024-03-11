@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
 				showConfirmButton: false,
 				padding: 0,
 				customClass: 'sweetalert-lg',
-			}).finally(() => {
+			}).then(() => {
+				eventData();
 				parseEvent(calendar)
 			  });
 		  },
@@ -23,13 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
     calendar.render();
 });
 
-function parseEvent(calendar)
-import { obtenerNombre, obtenerEdad } from "eventData.js"
+function parseEvent(calendar){
 	var parseo = JSON.parse(localStorage.getItem('evento'));
 	calendar.addEvent({
 		title: parseo.title,
 		description: parseo.description,
 		start: '2024-03-11'
 	});
-	console.log(parseo);
+	
 }

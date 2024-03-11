@@ -1,25 +1,15 @@
-var event;
-export function obtenerNombre() {
-  return event;
-}
-
 
 function eventData(){
-    localStorage.clear();
     var tittle = document.querySelector('h1').textContent;
     var description = document.querySelector('input').value;
     var time = document.getElementById('time').textContent;
-    event = {
+    const event = {
         title: tittle,
         description: description,
         start: time
       }
-      localStorage.setItem("evento",JSON.stringify(event),function() {
-  // Obtener el valor de la variable "nombre"
-  var nombre = localStorage.getItem("nombre");
-})
-      console.log(localStorage.getItem("evento"));
-      
+      localStorage.clear();
+      localStorage.setItem("evento",JSON.stringify(event));
 }
 
 document.addEventListener('DOMContentLoaded', function() {
