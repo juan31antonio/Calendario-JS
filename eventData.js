@@ -25,14 +25,10 @@ function eventData(){
       date: time,
       color: activeColor
   }
-  console.log(event);
       localStorage.clear();
       setTimeout(() => {
 		  localStorage.setItem('evento', JSON.stringify(event));
 	    }, 0);
-
-
-    
 }
 
 document.addEventListener('DOMContentLoaded', function() {

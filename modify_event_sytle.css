@@ -153,13 +153,30 @@ button:active {
     font-size: 3em;
     visibility: hidden;
 }
-#time{
-    margin-bottom: 1.5em;
-    width: 22em;
-    height: 3em;
-    border-radius: 1em;
-}
+
 #buttons{
     display: flex;
     flex-direction: row;
+}
+
+#eventTime {
+    width: 22em; 
+    height: 3em;
+    border-radius: 1em;
+    border: 0px;
+    background-color: #575757;
+    margin-bottom: 1.5em; 
+    padding-left: 1em;
+    box-sizing: border-box;
+    color: white;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+}
+
+.swal2-popup {
+    width: initial;
+    padding: initial;
+    background: #efefef;
 }
