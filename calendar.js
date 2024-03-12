@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
     var iframeEl = document.getElementById('miIframe');
     var lastInfo; 
-
+	var event;
     var calendar = new FullCalendar.Calendar(calendarEl,{
         dateClick: function(info) {
             lastInfo = info; 
@@ -14,9 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         },
         eventClick: function(info) {
-            const event = info.event;
+            event = info.event;
             const eventData = {
-                id: '1',
                 title: event.title,
                 description: event.extendedProps.description,
                 date: event.startStr,
@@ -24,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             localStorage.setItem('evento', JSON.stringify(eventData));
             localStorage.setItem('event', JSON.stringify(event));
-
             const swalModify = Swal.fire({
                 html: '<iframe src="modify_event.html" style="width: 25em; height: 29em; border: none; margin: 0px;"></iframe>',
                 showConfirmButton: false,
@@ -44,24 +42,32 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    window.addEventListener("message", (event) => {
-        if (event.data.type === "swal-input") {
-            parseEvent(calendar, lastInfo.dateStr); 
-            swal.close();
+    window.addEventListener("message", (e) => {
+        if (e.data.type === "swal-input") {
+			setTimeout(() => {
+				event.remove();
+			}, 1);
+			setTimeout(() => {
+				var parseo = JSON.parse(localStorage.getItem('evento'));
+				calendar.addEvent({
+					title: parseo.title,
+					description: parseo.description,
+					start: dateStr+'T'+parseo.date,
+					color: parseo.color 
+				})
+				swal.close();
+			}, 10);
         }
     });
 
-    window.addEventListener("message", (event) => {
-        if (event.data.type === "swal-success") {
-            const eventToDelete = lastInfo.event;
-            var event = calendar.getEventById('1');
-      calendarEl.FullClaendar.removeEvents([event]); // Remove the event
-      swal.close();
+    window.addEventListener("message", (e) => {
+        if (e.data.type === "swal-success") {
+			setTimeout(() => {
+				event.remove();
+      			swal.close();
+			}, 3000);
         }
     });
-
-
-
     calendar.render();
 });
 

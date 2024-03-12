@@ -18,7 +18,7 @@ function eventDataModify(){
   
     var tittle = document.querySelector('h1').textContent;
     var description = document.querySelector('input').value;
-    var time = document.getElementById('time').textContent;
+    var time = document.getElementById('eventTime').textContent;
     const event = {
         title: tittle,
         description: description,
