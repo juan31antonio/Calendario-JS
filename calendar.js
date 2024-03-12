@@ -53,7 +53,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener("message", (event) => {
         if (event.data.type === "swal-success") {
-            deleteEvent(calendar);
+            const eventToDelete = lastInfo.event;
+            var event = calendar.getEventById('1');
+      calendarEl.FullClaendar.removeEvents([event]); // Remove the event
+      swal.close();
         }
     });
 
@@ -75,9 +78,5 @@ function parseEvent(calendar, dateStr){
 
 function clear(){
     localStorage.clear();
-}
-
-function deleteEvent(calendar){
-    calendar.getElementById('1').remove();
 }
 
