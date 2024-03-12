@@ -12,7 +12,8 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.10/dist/sweetalert2.all.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="timer.js"></script>
-  <script src="eventData.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+  <script src="eventDataModify.js"></script>
   <style>
     .swal2-popup {
         width: initial;
@@ -50,9 +51,9 @@
   </div>
   <hr>
   <div id="buttons">
-    <button id="close" onclick="eventData()">Confirm Changes</button>
+    <button id="close" onclick="eventDataModify()">Confirm Changes</button>
     <div id="container-trash">
-      <button class="button">
+      <button id="trash" class="button">
         <div class="trash">
             <div class="top">
                 <div class="paper"></div>
@@ -99,13 +100,7 @@
                 arrowDiv.style.visibility = 'visible';
             }
         }
-    document.querySelector('#container-trash .button').addEventListener('click', function() {
-        const eventId = JSON.parse(localStorage.getItem('selectedEvent'));
-        const event = calendar.getEventById(eventId);
-        if (event) {
-            event.remove();
-        }
-    });
+    
 });
 
   </script>

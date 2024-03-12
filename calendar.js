@@ -16,12 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
         eventClick: function(info) {
             const event = info.event;
             const eventData = {
+                id: '1',
                 title: event.title,
                 description: event.extendedProps.description,
                 date: event.startStr,
                 color: event.backgroundColor
             };
             localStorage.setItem('evento', JSON.stringify(eventData));
+            localStorage.setItem('event', JSON.stringify(event));
 
             const swalModify = Swal.fire({
                 html: '<iframe src="modify_event.html" style="width: 25em; height: 29em; border: none; margin: 0px;"></iframe>',
@@ -31,18 +33,27 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         },
         editable: true,
-        dayMaxEvents: true
+        dayMaxEvents: true,
+        removeEvents: true
     });
-
-	calendar.on('eventClick', function(info) {
-		const event = info.event;
-		localStorage.setItem('selectedEvent', JSON.stringify(event.id));
-	});
 
     window.addEventListener("message", (event) => {
         if (event.data.type === "swal-confirm") {
             parseEvent(calendar, lastInfo.dateStr); 
             swal.close();
+        }
+    });
+
+    window.addEventListener("message", (event) => {
+        if (event.data.type === "swal-input") {
+            parseEvent(calendar, lastInfo.dateStr); 
+            swal.close();
+        }
+    });
+
+    window.addEventListener("message", (event) => {
+        if (event.data.type === "swal-success") {
+            deleteEvent(calendar);
         }
     });
 
@@ -64,5 +75,9 @@ function parseEvent(calendar, dateStr){
 
 function clear(){
     localStorage.clear();
+}
+
+function deleteEvent(calendar){
+    calendar.getElementById('1').remove();
 }
 
