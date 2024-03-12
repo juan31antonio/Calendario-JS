@@ -11,6 +11,12 @@
     padding: 2em 5% 3em 5%;
 }
 
+@media only screen and (device-width: 375px) and (device-height: 667px) {
+    #container {
+        transform: translate(-57%, -50%) !important;
+    }
+  }
+
 #inputs {
     display: flex;
     flex-direction: column;
