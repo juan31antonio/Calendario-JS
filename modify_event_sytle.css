@@ -166,7 +166,7 @@ button:active {
     flex-direction: row;
 }
 
-#eventTime {
+#time {
     width: 22em; 
     height: 3em;
     border-radius: 1em;

@@ -27,7 +27,7 @@
     <h1 id="eventTitle" spellcheck="false">Event Name</h1>
     <div id="inputs">
       <input id="eventDescription" type="text" placeholder="Description">
-      <button id="eventTime" onclick="timer()">Time</button>
+      <button id="time" onclick="timer(),timeOnload()">Time</button>
       <div class="dropdown">
         <span>
           <div id="div-container">
@@ -84,7 +84,7 @@
             var seconds = date.getSeconds();
             var timeStr = `${hours < 10 ? '0'+hours : hours}:${minutes < 10 ? '0'+minutes : minutes}:${seconds < 10 ? '0'+seconds : seconds}`;
 
-            document.getElementById('eventTime').textContent = timeStr;
+            document.getElementById('time').textContent = timeStr;
             
             var colorMap = {
                 "verde": "#008000",
@@ -104,8 +104,5 @@
 });
 
   </script>
-</body>
-</html>
-  
 </body>
 </html>

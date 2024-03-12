@@ -1,9 +1,11 @@
 if(localStorage.getItem("fecha")){
     var date = new Date(localStorage.getItem("fecha"));
+    console.log(date)
 }
 else{
-   var date = new Date();
-}
+    var date = new Date();
+    }
+
         var hours = Array.from({length: 24}, (_, i) => i);
         var minutes = Array.from({length: 60}, (_, i) => i); 
         var seconds = Array.from({length: 60}, (_, i) => i);

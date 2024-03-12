@@ -11,3 +11,12 @@ function timer(){
       document.getElementById('time').textContent = `${fecha.getHours() < 10 ? '0'+fecha.getHours():fecha.getHours()}:${fecha.getMinutes() < 10 ? '0'+fecha.getMinutes():fecha.getMinutes()}:${fecha.getSeconds() < 10 ? '0'+fecha.getSeconds():fecha.getSeconds()}`;
     });
 }
+function timeOnload(){
+  const date = document.getElementById('time').textContent;
+  var tiempo = new Date();
+  tiempo.setHours(parseInt(date.substring(0,2)),parseInt(date.substring(3,5)),parseInt(date.substring(6)))
+  setTimeout(() => {
+    localStorage.clear();
+    localStorage.setItem("fecha",tiempo.toISOString());
+  }, 0);
+}
